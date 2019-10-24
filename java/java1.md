@@ -132,7 +132,7 @@ System.out.println(“I am “ + age + “ years old);
 
 The variable age is overwritten and we changed the value it stores.
 
-### Operators
+## Operators
 
 First of all let's declare two numbers, number1 and number2 with 34 and 87 and print them to the console.
 
@@ -217,3 +217,149 @@ System.out.println(c)
 ```
 
 Play around again and see which things are equal and which are not. You can also use the comparisions for non-numeric data types.
+
+## Control structures: if, else and switch
+
+### If-statements
+
+Control structures are helpful, if you want logic only to be executed under certain conditions. For things like that we can use if-statements in Java.
+The syntax looks like the following:
+
+```java
+if (condition) {
+	//statements to be executed when condition is true
+}
+```
+
+A condition must be a boolean value, for example the result of a comparison.
+
+An easy example could be a simple validation of integers. Let's create a variable, give it any name we want and assign it the value 0. 
+The next step is writing an if and comparing weather the number is smaller or equal to 0. If it is, print to the console, that the value has to be bigger than 0.
+
+```java
+int age = 0;
+if (age <= 0) {
+    System.out.println("Your age must be more than zero");
+}
+```
+
+Now if we also want to do something in case our age is more than zero we can use an else block. 
+
+```java
+int age = 0;
+if (age <= 0) {
+    System.out.println("Your age must be more than zero");
+} else {
+    System.out.println("All good, your age is greater than zero");
+}
+```
+
+You can combine if's and elses in a statement: 
+
+```java 
+int age = 0;
+if (age <= 0) {
+    System.out.println("Your age must be more than zero");
+} else if (age == 21) {
+    System.out.println("21 is a really special age!");
+} else {
+    System.out.println("All good, your age is greater than zero");
+}
+```
+
+If you want to join multiple conditions in one statement you can use the logical `and &&` and `or ||`. 
+
+```java 
+int number = 0;
+if (age < 0) {
+    System.out.println("Your number is less than zero!");
+} else if (age == 1 || age == 2 || age == 3 | age == 5 || age == 7 || age == 11) {
+    System.out.println("Your number is a prime!");
+} else {
+    System.out.println("All good, your age is greater than zero");
+}
+```
+
+In this example, if the number is less than zeroe we'll see `Your number is less than zero!`, if the number is 1,2,3,5,7 or 11 we'll get `Your number is a prime!` and in every other case we will see `All good, your age is greater than zero`. 
+
+
+### Switch
+
+Another way of expressing conditional statements is the switch statement. The switch statement is escpecially handy when we have a finite set of possible variables. A nice example is an encoding of the possible days in a week - a 0 is monday, 1 is tuesday and so forth. The switch accepts a parameter and will compare this parameter to the available values in the case. The `default` branch represents the else. 
+
+```java 
+int dayOfTheWeek = 0;
+switch (dayOfTheWeek) {
+    case 0: System.out.println("Monday");
+            break;
+    case 1: System.out.println("Tuesday");
+            break;
+    case 2: System.out.println("Wednesday");
+            break;
+    case 3: System.out.println("Thursday");
+            break;
+    case 4: System.out.println("Friday");
+            break;
+    case 5: System.out.println("Saturday");
+            break;
+    case 6: System.out.println("Sunday");
+            break;
+    default: System.out.println("Invalid Weekday");
+            break;
+} 
+```
+
+Careful with the `break` statements. They are required to stop the execution of the switch-statement after a successful match. If we would not have the breaks we would see the line `Invalid Weekday` everytime after the specific weekday was matched. 
+
+So if it were Monday and the break was not there our output would be: 
+```
+Monday
+Invalid Weekday
+```
+
+| If            | Switch           | 
+| ------------- |:-------------:| 
+| allows complex expressions in the condition while switch wants a constant  | It only makes sense when the cases are finite | 
+| accepts anything that evaluates to a boolean value      | only works with some types - int, long, String, enumerations    |  
+| can't forget the break keyword |only constants for cases |   
+| | very readable and compackt |
+
+
+## Loops
+
+There are three different kinds of loops in java. 
+
+### While 
+
+Let’s start with the while loop. The while loop executes the instructions given inside the loop body as long as a condition is fulfilled. 
+The syntax is: 
+
+```java
+while (condition) {
+	// instructions
+}
+```
+
+Let’s initialize the variable i with 0. 
+Create a while loop with the condition that i must not be bigger than 10. Print i in the loop.
+
+```java
+int i = 0;
+while (i<10) {
+	System.out.println(i);
+}
+```
+
+When we do this we end up with an infinite loop printling lines of `1` because our loop condition never changes as our variable i never changes. 
+
+> Insanity is doing the same thing over and over again and expecting different results
+
+In our case it's checking again and again if i is less than 10 without i ever changing. Let's change that to increase i every time we pass the loop. 
+
+```java
+int i = 0;
+while (i<10) {
+	System.out.println(i);
+    i++;
+}
+```
